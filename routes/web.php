@@ -23,3 +23,7 @@ Route::get('/admin','AdminController@index');
 Route::get('/dashboard','AdminController@show_dashboard');
 Route::post('/admin-dashboard','AdminController@dashboard');
 Route::get('/logout','SuperAdminController@logout');
+
+// Category
+Route::get('/all-category','CategoryConntroller@index');
+Route::get('/add-category','CategoryConntroller@index');
