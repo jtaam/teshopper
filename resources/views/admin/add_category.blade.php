@@ -21,15 +21,22 @@
                     <a href="#" class="btn-close"><i class="halflings-icon remove"></i></a>
                 </div>
             </div>
+            <?php
+                $message = Session::get('message');
+                if ($message){
+                    echo $message;
+                    Session::put('message', null);
+                }
+            ?>
             <div class="box-content">
-                <form class="form-horizontal" action="" method="post">
+                <form class="form-horizontal" action="{{url('save-category')}}" method="post">
                     {{csrf_field()}}
                     <fieldset>
 
                         <div class="control-group">
                             <label class="control-label" for="category_name">Name</label>
                             <div class="controls">
-                                <input type="text" name="category_name" class="input-xlarge" id="category_name" value="">
+                                <input type="text" name="category_name" class="input-xlarge" id="category_name" value="" required>
                             </div>
                         </div>
 
@@ -57,7 +64,7 @@
                             <label class="control-label" for="textarea2">Status</label>
                             <div class="checker">
                                 <span>
-                                    <input type="checkbox" name="publication_status" value="1">
+                                    <input type="checkbox" name="category_status" value=1>
                                 </span>
                             </div>
                         </div>
