@@ -28,3 +28,5 @@ Route::get('/logout','SuperAdminController@logout');
 Route::get('/all-category','CategoryConntroller@index');
 Route::get('/add-category','CategoryConntroller@create');
 Route::post('/save-category','CategoryConntroller@save');
+Route::get('/unpublish_category/{category_id}','CategoryConntroller@unpublish');
+Route::get('/publish_category/{category_id}','CategoryConntroller@publish');

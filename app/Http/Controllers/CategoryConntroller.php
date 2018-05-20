@@ -34,4 +34,20 @@ class CategoryConntroller extends Controller
         Session::put('message','<div class="alert alert-success">Category Added!</div>');
         return Redirect::to('/add-category');
     }
+
+    public function unpublish($category_id){
+        DB::table('tbl_category')
+            ->where('category_id', $category_id)
+            ->update(['category_status' => 0]);
+        Session::put('message','<p class="alert alert-success">Category Unpublished!</p>');
+        return Redirect::to('all-category');
+    }
+
+    public function publish($category_id){
+        DB::table('tbl_category')
+            ->where('category_id', $category_id)
+            ->update(['category_status' => 1]);
+        Session::put('message','<p class="alert alert-success">Category Published!</p>');
+        return Redirect::to('all-category');
+    }
 }

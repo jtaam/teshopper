@@ -10,6 +10,13 @@
             </li>
             <li><a href="#">Tables</a></li>
         </ul>
+        <?php
+            $message = Session::get('message');
+            if ($message){
+                echo $message;
+                Session::put('message', null);
+            }
+        ?>
 
         <div class="row-fluid sortable">
             <div class="box span12">
@@ -47,11 +54,11 @@
                                 </td>
                                 <td class="center">
                                     @if(0 == $v_category->category_status)
-                                        <a class="btn btn-success" href="#">
+                                        <a class="btn btn-success" href="{{URL::to('/publish_category/'.$v_category->category_id)}}">
                                                 <i class="halflings-icon white thumbs-up"></i>
                                         </a>
                                     @else
-                                        <a class="btn btn-danger" href="#">
+                                        <a class="btn btn-danger" href="{{URL::to('/unpublish_category/'.$v_category->category_id)}}">
                                             <i class="halflings-icon white thumbs-down"></i>
                                         </a>
                                     @endif
