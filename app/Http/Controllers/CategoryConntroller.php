@@ -50,4 +50,27 @@ class CategoryConntroller extends Controller
         Session::put('message','<p class="alert alert-success">Category Published!</p>');
         return Redirect::to('all-category');
     }
+
+    public function edit($category_id){
+        $the_category_info = DB::table('tbl_category')
+            ->where('category_id',$category_id)
+            ->first();
+        $category_info = view('admin.edit_category')
+            ->with('the_category_info', $the_category_info);
+        return view('admin_layout')
+            ->with('admin.edit_category', $category_info);
+//        return view('admin.edit_category');
+    }
+
+    public function update(Request $request, $category_id){
+        $data = array();
+        $data['category_name'] = $request->category_name;
+        $data['category_description'] = $request->category_description;
+
+        DB::table('tbl_category')
+            ->where('category_id', $category_id)
+            ->update($data);
+        Session::put('message','<p class="alert alert-success">Category updated</p>');
+        return Redirect::to('all-category');
+    }
 }

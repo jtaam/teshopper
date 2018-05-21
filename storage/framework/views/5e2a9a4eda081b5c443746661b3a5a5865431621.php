@@ -61,7 +61,7 @@
                                             <i class="halflings-icon white thumbs-down"></i>
                                         </a>
                                     <?php endif; ?>
-                                    <a class="btn btn-info" href="#">
+                                    <a class="btn btn-info" href="<?php echo e(URL::to('/edit_category/'.$v_category->category_id)); ?>">
                                         <i class="halflings-icon white edit"></i>
                                     </a>
                                     <a class="btn btn-secondary" href="#">
