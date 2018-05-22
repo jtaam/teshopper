@@ -18,8 +18,8 @@ class CreateTblProducts extends Migration
             $table->text('product_name');
             $table->integer('category_id');
             $table->integer('brand_id');
-            $table->text('product_short_decription');
-            $table->longText('product_long_decription');
+            $table->text('product_short_description');
+            $table->longText('product_long_description');
             $table->float('product_price');
             $table->string('product_image');
             $table->string('product_size');

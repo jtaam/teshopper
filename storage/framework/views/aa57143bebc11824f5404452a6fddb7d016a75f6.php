@@ -28,7 +28,7 @@
                 }
             ?>
             <div class="box-content">
-                <form class="form-horizontal" action="<?php echo e(url('save-product')); ?>" method="post">
+                <form class="form-horizontal" action="<?php echo e(url('save-product')); ?>" method="post" enctype="multipart/form-data">
                     <?php echo e(csrf_field()); ?>
 
                     <fieldset>
@@ -43,12 +43,16 @@
                         <div class="control-group">
                             <label class="control-label" for="selectError3">Category</label>
                             <div class="controls">
-                                <select id="selectError3">
-                                    <option>Option 1</option>
-                                    <option>Option 2</option>
-                                    <option>Option 3</option>
-                                    <option>Option 4</option>
-                                    <option>Option 5</option>
+                                <select id="selectError3" name="category_id">
+                                    <option value="">Select Category</option>
+                                    <?php
+                                    $all_published_category = DB::table('tbl_category')
+                                        ->where('category_status', 1)
+                                        ->get();
+                                    ?>
+                                    <?php $__currentLoopData = $all_published_category; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                        <option value="<?php echo e($category->category_id); ?>"><?php echo e($category->category_name); ?></option>
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                 </select>
                             </div>
                         </div>
@@ -56,12 +60,16 @@
                         <div class="control-group">
                             <label class="control-label" for="selectError3">Brand</label>
                             <div class="controls">
-                                <select id="selectError3">
-                                    <option>Option 1</option>
-                                    <option>Option 2</option>
-                                    <option>Option 3</option>
-                                    <option>Option 4</option>
-                                    <option>Option 5</option>
+                                <select id="selectError3" name="brand_id">
+                                    <option value="">Select Brand</option>
+                                    <?php
+                                    $all_published_brand = DB::table('tbl_brand')
+                                        ->where('brand_status', 1)
+                                        ->get();
+                                    ?>
+                                    <?php $__currentLoopData = $all_published_brand; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $brand): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                        <option value="<?php echo e($brand->brand_id); ?>"><?php echo e($brand->brand_name); ?></option>
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                 </select>
                             </div>
                         </div>
@@ -97,7 +105,7 @@
                         <div class="control-group">
                             <label class="control-label" for="fileInput">Image</label>
                             <div class="controls">
-                                <input class="input-file uniform_on" id="fileInput" type="file">
+                                <input name="product_image" class="input-file uniform_on" id="fileInput" type="file">
                             </div>
                         </div>
 

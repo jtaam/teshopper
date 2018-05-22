@@ -29,7 +29,7 @@
                 }
             ?>
             <div class="box-content">
-                <form class="form-horizontal" action="{{url('save-product')}}" method="post">
+                <form class="form-horizontal" action="{{url('save-product')}}" method="post" enctype="multipart/form-data">
                     {{csrf_field()}}
                     <fieldset>
 
@@ -43,12 +43,16 @@
                         <div class="control-group">
                             <label class="control-label" for="selectError3">Category</label>
                             <div class="controls">
-                                <select id="selectError3">
-                                    <option>Option 1</option>
-                                    <option>Option 2</option>
-                                    <option>Option 3</option>
-                                    <option>Option 4</option>
-                                    <option>Option 5</option>
+                                <select id="selectError3" name="category_id">
+                                    <option value="">Select Category</option>
+                                    <?php
+                                    $all_published_category = DB::table('tbl_category')
+                                        ->where('category_status', 1)
+                                        ->get();
+                                    ?>
+                                    @foreach($all_published_category as $category)
+                                        <option value="{{$category->category_id}}">{{$category->category_name}}</option>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>
@@ -56,12 +60,16 @@
                         <div class="control-group">
                             <label class="control-label" for="selectError3">Brand</label>
                             <div class="controls">
-                                <select id="selectError3">
-                                    <option>Option 1</option>
-                                    <option>Option 2</option>
-                                    <option>Option 3</option>
-                                    <option>Option 4</option>
-                                    <option>Option 5</option>
+                                <select id="selectError3" name="brand_id">
+                                    <option value="">Select Brand</option>
+                                    <?php
+                                    $all_published_brand = DB::table('tbl_brand')
+                                        ->where('brand_status', 1)
+                                        ->get();
+                                    ?>
+                                    @foreach($all_published_brand as $brand)
+                                        <option value="{{$brand->brand_id}}">{{$brand->brand_name}}</option>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>
@@ -97,7 +105,7 @@
                         <div class="control-group">
                             <label class="control-label" for="fileInput">Image</label>
                             <div class="controls">
-                                <input class="input-file uniform_on" id="fileInput" type="file">
+                                <input name="product_image" class="input-file uniform_on" id="fileInput" type="file">
                             </div>
                         </div>
 
