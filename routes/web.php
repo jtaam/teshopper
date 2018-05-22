@@ -33,3 +33,14 @@ Route::get('/publish_category/{category_id}','CategoryConntroller@publish');
 Route::get('/edit_category/{category_id}','CategoryConntroller@edit');
 Route::post('/update-category/{category_id}','CategoryConntroller@update');
 Route::get('/delete_category/{category_id}','CategoryConntroller@delete');
+
+
+// Brands
+Route::get('/all-brand','BrandConntroller@index');
+Route::get('/add-brand','BrandConntroller@create');
+Route::post('/save-brand','BrandConntroller@save');
+Route::get('/unpublish_brand/{brand_id}','BrandConntroller@unpublish');
+Route::get('/publish_brand/{brand_id}','BrandConntroller@publish');
+Route::get('/edit_brand/{brand_id}','BrandConntroller@edit');
+Route::post('/update-brand/{brand_id}','BrandConntroller@update');
+Route::get('/delete_brand/{brand_id}','BrandConntroller@delete');

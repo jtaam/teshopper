@@ -8,7 +8,7 @@
                 <a href="index.html">Home</a>
                 <i class="icon-angle-right"></i>
             </li>
-            <li><a href="#">Tables</a></li>
+            <li><a href="#">Categories</a></li>
         </ul>
         <?php
         $message = Session::get('message');

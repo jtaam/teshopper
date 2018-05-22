@@ -337,11 +337,11 @@
 					<ul class="nav nav-tabs nav-stacked main-menu">
 						<li><a href="<?php echo e(URL::to('/dashboard')); ?>"><i class="icon-bar-chart"></i><span class="hidden-tablet"> Dashboard</span></a></li>
 
-						<li><a href="<?php echo e(URL::to('all-category')); ?>"><i class="icon-envelope"></i><span class="hidden-tablet"> All Category</span></a></li>
+						<li><a href="<?php echo e(URL::to('all-category')); ?>"><i class="icon-envelope"></i><span class="hidden-tablet"> All Categories</span></a></li>
 						<li><a href="<?php echo e(URL::to('add-category')); ?>"><i class="icon-tasks"></i><span class="hidden-tablet"> Add Category</span></a></li>
 
-						<li><a href="ui.html"><i class="icon-eye-open"></i><span class="hidden-tablet"> All Brands</span></a></li>
-						<li><a href="widgets.html"><i class="icon-dashboard"></i><span class="hidden-tablet"> Add Brand</span></a></li>
+						<li><a href="<?php echo e(URL::to('all-brand')); ?>"><i class="icon-eye-open"></i><span class="hidden-tablet"> All Brands</span></a></li>
+						<li><a href="<?php echo e(URL::to('add-brand')); ?>"><i class="icon-dashboard"></i><span class="hidden-tablet"> Add Brand</span></a></li>
 						<li>
 							<a class="dropmenu" href="#"><i class="icon-folder-close-alt"></i><span class="hidden-tablet"> Products</span><span class="label label-important"> New </span></a>
 							<ul>

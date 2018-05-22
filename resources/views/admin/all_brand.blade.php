@@ -1,4 +1,5 @@
-<?php $__env->startSection('admin_content'); ?>
+@extends('admin_layout')
+@section('admin_content')
     <!-- start: Content -->
     <div id="content" class="span10">
         <ul class="breadcrumb">
@@ -7,7 +8,7 @@
                 <a href="index.html">Home</a>
                 <i class="icon-angle-right"></i>
             </li>
-            <li><a href="#">Categories</a></li>
+            <li><a href="#">Brands</a></li>
         </ul>
         <?php
         $message = Session::get('message');
@@ -39,47 +40,46 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <?php $__currentLoopData = $all_category_info; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $v_category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                        @foreach( $all_brand_info as $v_brand)
                             <tr>
-                                <td><?php echo e($v_category->category_id); ?></td>
-                                <td class="center"><?php echo e($v_category->category_name); ?></td>
-                                <td class="center"><?php echo e($v_category->category_description); ?></td>
+                                <td>{{$v_brand->brand_id}}</td>
+                                <td class="center">{{$v_brand->brand_name}}</td>
+                                <td class="center">{{$v_brand->brand_description}}</td>
                                 <td class="center">
-                                    <?php if(0 == $v_category->category_status): ?>
+                                    @if(0 == $v_brand->brand_status)
                                         <span class="label label-warning">Pending</span>
-                                    <?php else: ?>
+                                    @else( 1 == $v_brand->brand_status)
                                         <span class="label label-success">Published</span>
-                                    <?php endif; ?>
+                                    @endif
                                 </td>
                                 <td class="center">
-                                    <?php if(0 == $v_category->category_status): ?>
+                                    @if(0 == $v_brand->brand_status)
                                         <a class="btn btn-success"
-                                           href="<?php echo e(URL::to('/publish_category/'.$v_category->category_id)); ?>">
+                                           href="{{URL::to('/publish_brand/'.$v_brand->brand_id)}}">
                                             <i class="halflings-icon white thumbs-up"></i>
                                         </a>
-                                    <?php else: ?>
+                                    @else
                                         <a class="btn btn-danger"
-                                           href="<?php echo e(URL::to('/unpublish_category/'.$v_category->category_id)); ?>">
+                                           href="{{URL::to('/unpublish_brand/'.$v_brand->brand_id)}}">
                                             <i class="halflings-icon white thumbs-down"></i>
                                         </a>
-                                    <?php endif; ?>
+                                    @endif
                                     <a class="btn btn-info"
-                                       href="<?php echo e(URL::to('/edit_category/'.$v_category->category_id)); ?>">
+                                       href="{{URL::to('/edit_brand/'.$v_brand->brand_id)}}">
                                         <i class="halflings-icon white edit"></i>
                                     </a>
                                     <a class="btn btn-secondary"
-                                       href="<?php echo e(URL::to('/delete_category/'.$v_category->category_id)); ?>" id="delete">
+                                       href="{{URL::to('/delete_brand/'.$v_brand->brand_id)}}" id="delete">
                                         <i class="halflings-icon white trash"></i>
 
                                     </a>
                                 </td>
                             </tr>
-                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                        @endforeach
                         </tbody>
                     </table>
                 </div>
             </div><!--/span-->
 
         </div><!--/row-->
-<?php $__env->stopSection(); ?>
-<?php echo $__env->make('admin_layout', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+@endsection

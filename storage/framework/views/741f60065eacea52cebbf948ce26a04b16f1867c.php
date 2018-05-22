@@ -223,7 +223,7 @@
                             <?php $__currentLoopData = $all_published_category; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                             <div class="panel panel-default">
                                 <div class="panel-heading">
-                                    <h4 class="panel-title"><a href="#"><?php echo e($category->category_name); ?></a></h4>
+                                    <h4 class="panel-title"><a href="/category/<?php echo e($category->category_id); ?>"><?php echo e($category->category_name); ?></a></h4>
                                 </div>
                             </div>
                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
