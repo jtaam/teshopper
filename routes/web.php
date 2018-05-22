@@ -42,3 +42,6 @@ Route::get('/publish_brand/{brand_id}','BrandConntroller@publish');
 Route::get('/edit_brand/{brand_id}','BrandConntroller@edit');
 Route::post('/update-brand/{brand_id}','BrandConntroller@update');
 Route::get('/delete_brand/{brand_id}','BrandConntroller@delete');
+
+// Products
+Route::get('add-product','ProductController@create');
