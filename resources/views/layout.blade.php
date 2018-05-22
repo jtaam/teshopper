@@ -526,5 +526,6 @@
     <script src="{{URL::to('frontend/js/price-range.js')}}"></script>
     <script src="{{URL::to('frontend/js/jquery.prettyPhoto.js')}}"></script>
     <script src="{{URL::to('frontend/js/main.js')}}"></script>
+
 </body>
 </html>

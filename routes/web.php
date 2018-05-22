@@ -32,3 +32,4 @@ Route::get('/unpublish_category/{category_id}','CategoryConntroller@unpublish');
 Route::get('/publish_category/{category_id}','CategoryConntroller@publish');
 Route::get('/edit_category/{category_id}','CategoryConntroller@edit');
 Route::post('/update-category/{category_id}','CategoryConntroller@update');
+Route::get('/delete_category/{category_id}','CategoryConntroller@delete');

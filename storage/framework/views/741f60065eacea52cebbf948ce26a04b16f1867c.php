@@ -526,5 +526,6 @@
     <script src="<?php echo e(URL::to('frontend/js/price-range.js')); ?>"></script>
     <script src="<?php echo e(URL::to('frontend/js/jquery.prettyPhoto.js')); ?>"></script>
     <script src="<?php echo e(URL::to('frontend/js/main.js')); ?>"></script>
+
 </body>
 </html>

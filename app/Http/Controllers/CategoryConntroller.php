@@ -31,7 +31,7 @@ class CategoryConntroller extends Controller
         $data['updated_at'] = $request->updated_at;
         $data['category_status'] = $request->category_status;
         DB::table('tbl_category')->insert($data);
-        Session::put('message','<div class="alert alert-success">Category Added!</div>');
+        Session::put('message','<div class="alert alert-success">Category added!</div>');
         return Redirect::to('/add-category');
     }
 
@@ -39,7 +39,7 @@ class CategoryConntroller extends Controller
         DB::table('tbl_category')
             ->where('category_id', $category_id)
             ->update(['category_status' => 0]);
-        Session::put('message','<p class="alert alert-success">Category Unpublished!</p>');
+        Session::put('message','<p class="alert alert-success">Category unpublished!</p>');
         return Redirect::to('all-category');
     }
 
@@ -47,7 +47,7 @@ class CategoryConntroller extends Controller
         DB::table('tbl_category')
             ->where('category_id', $category_id)
             ->update(['category_status' => 1]);
-        Session::put('message','<p class="alert alert-success">Category Published!</p>');
+        Session::put('message','<p class="alert alert-success">Category published!</p>');
         return Redirect::to('all-category');
     }
 
@@ -59,7 +59,6 @@ class CategoryConntroller extends Controller
             ->with('the_category_info', $the_category_info);
         return view('admin_layout')
             ->with('admin.edit_category', $category_info);
-//        return view('admin.edit_category');
     }
 
     public function update(Request $request, $category_id){
@@ -70,7 +69,15 @@ class CategoryConntroller extends Controller
         DB::table('tbl_category')
             ->where('category_id', $category_id)
             ->update($data);
-        Session::put('message','<p class="alert alert-success">Category updated</p>');
+        Session::put('message','<p class="alert alert-success">Category updated!</p>');
+        return Redirect::to('all-category');
+    }
+
+    public function delete($category_id){
+        DB::table('tbl_category')
+            ->where('category_id', $category_id)
+            ->delete();
+        Session::put('message','<p class="alert alert-success">Category deleted!</p>');
         return Redirect::to('all-category');
     }
 }

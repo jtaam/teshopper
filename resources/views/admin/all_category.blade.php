@@ -11,11 +11,11 @@
             <li><a href="#">Tables</a></li>
         </ul>
         <?php
-            $message = Session::get('message');
-            if ($message){
-                echo $message;
-                Session::put('message', null);
-            }
+        $message = Session::get('message');
+        if ($message) {
+            echo $message;
+            Session::put('message', null);
+        }
         ?>
 
         <div class="row-fluid sortable">
@@ -40,7 +40,7 @@
                         </tr>
                         </thead>
                         <tbody>
-                            @foreach( $all_category_info as $v_category)
+                        @foreach( $all_category_info as $v_category)
                             <tr>
                                 <td>{{$v_category->category_id}}</td>
                                 <td class="center">{{$v_category->category_name}}</td>
@@ -54,24 +54,28 @@
                                 </td>
                                 <td class="center">
                                     @if(0 == $v_category->category_status)
-                                        <a class="btn btn-success" href="{{URL::to('/publish_category/'.$v_category->category_id)}}">
-                                                <i class="halflings-icon white thumbs-up"></i>
+                                        <a class="btn btn-success"
+                                           href="{{URL::to('/publish_category/'.$v_category->category_id)}}">
+                                            <i class="halflings-icon white thumbs-up"></i>
                                         </a>
                                     @else
-                                        <a class="btn btn-danger" href="{{URL::to('/unpublish_category/'.$v_category->category_id)}}">
+                                        <a class="btn btn-danger"
+                                           href="{{URL::to('/unpublish_category/'.$v_category->category_id)}}">
                                             <i class="halflings-icon white thumbs-down"></i>
                                         </a>
                                     @endif
-                                    <a class="btn btn-info" href="{{URL::to('/edit_category/'.$v_category->category_id)}}">
+                                    <a class="btn btn-info"
+                                       href="{{URL::to('/edit_category/'.$v_category->category_id)}}">
                                         <i class="halflings-icon white edit"></i>
                                     </a>
-                                    <a class="btn btn-secondary" href="#">
+                                    <a class="btn btn-secondary"
+                                       href="{{URL::to('/delete_category/'.$v_category->category_id)}}" id="delete">
                                         <i class="halflings-icon white trash"></i>
 
                                     </a>
                                 </td>
                             </tr>
-                            @endforeach
+                        @endforeach
                         </tbody>
                     </table>
                 </div>
