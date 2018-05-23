@@ -24,7 +24,7 @@ class CreateTblProducts extends Migration
             $table->string('product_image');
             $table->string('product_size');
             $table->string('product_color');
-            $table->tinyInteger('product_status');
+            $table->tinyInteger('product_status')->null();
             $table->timestamps();
         });
     }

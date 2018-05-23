@@ -2,158 +2,161 @@
 
 <div class="features_items"><!--features_items-->
     <h2 class="title text-center">Features Items</h2>
+    <?php $__currentLoopData = $all_published_products; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $product): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
     <div class="col-sm-4">
         <div class="product-image-wrapper">
             <div class="single-products">
                 <div class="productinfo text-center">
-                    <img src="<?php echo e(URL::to('frontend/images/home/product1.jpg')); ?>" alt="" />
-                    <h2>$56</h2>
-                    <p>Easy Polo Black Edition</p>
-                    <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                    <img src="<?php echo e(URL::to($product->product_image)); ?>" alt="" />
+                    <h2>$<?php echo e($product->product_price); ?></h2>
+                    <p><?php echo e($product->product_name); ?></p>
+                    <a href="cart/<?php echo e($product->product_id); ?>" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
                 </div>
                 <div class="product-overlay">
                     <div class="overlay-content">
-                        <h2>$56</h2>
-                        <p>Easy Polo Black Edition</p>
-                        <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                        <h2>$<?php echo e($product->product_price); ?></h2>
+                        <p><?php echo e($product->product_name); ?></p>
+                        <p><?php echo e($product->product_short_description); ?></p>
+                        <a href="cart/<?php echo e($product->product_id); ?>" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
                     </div>
                 </div>
             </div>
             <div class="choose">
                 <ul class="nav nav-pills nav-justified">
-                    <li><a href="#"><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
-                    <li><a href="#"><i class="fa fa-plus-square"></i>Add to compare</a></li>
+                    <li><a href="wishlist/<?php echo e($product->product_id); ?>"><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
+                    <li><a href="product/<?php echo e($product->product_id); ?>"><i class="fa fa-plus-square"></i>View Details</a></li>
                 </ul>
             </div>
         </div>
     </div>
-    <div class="col-sm-4">
-        <div class="product-image-wrapper">
-            <div class="single-products">
-                <div class="productinfo text-center">
-                    <img src="<?php echo e(URL::to('frontend/images/home/product2.jpg')); ?>" alt="" />
-                    <h2>$56</h2>
-                    <p>Easy Polo Black Edition</p>
-                    <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-                </div>
-                <div class="product-overlay">
-                    <div class="overlay-content">
-                        <h2>$56</h2>
-                        <p>Easy Polo Black Edition</p>
-                        <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-                    </div>
-                </div>
-            </div>
-            <div class="choose">
-                <ul class="nav nav-pills nav-justified">
-                    <li><a href="#"><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
-                    <li><a href="#"><i class="fa fa-plus-square"></i>Add to compare</a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
-    <div class="col-sm-4">
-        <div class="product-image-wrapper">
-            <div class="single-products">
-                <div class="productinfo text-center">
-                    <img src="<?php echo e(URL::to('frontend/images/home/product3.jpg')); ?>" alt="" />
-                    <h2>$56</h2>
-                    <p>Easy Polo Black Edition</p>
-                    <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-                </div>
-                <div class="product-overlay">
-                    <div class="overlay-content">
-                        <h2>$56</h2>
-                        <p>Easy Polo Black Edition</p>
-                        <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-                    </div>
-                </div>
-            </div>
-            <div class="choose">
-                <ul class="nav nav-pills nav-justified">
-                    <li><a href="#"><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
-                    <li><a href="#"><i class="fa fa-plus-square"></i>Add to compare</a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
-    <div class="col-sm-4">
-        <div class="product-image-wrapper">
-            <div class="single-products">
-                <div class="productinfo text-center">
-                    <img src="<?php echo e(URL::to('frontend/images/home/product4.jpg')); ?>" alt="" />
-                    <h2>$56</h2>
-                    <p>Easy Polo Black Edition</p>
-                    <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-                </div>
-                <div class="product-overlay">
-                    <div class="overlay-content">
-                        <h2>$56</h2>
-                        <p>Easy Polo Black Edition</p>
-                        <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-                    </div>
-                </div>
-                <img src="<?php echo e(URL::to('frontend/images/home/new.png')); ?>" class="new" alt="" />
-            </div>
-            <div class="choose">
-                <ul class="nav nav-pills nav-justified">
-                    <li><a href="#"><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
-                    <li><a href="#"><i class="fa fa-plus-square"></i>Add to compare</a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
-    <div class="col-sm-4">
-        <div class="product-image-wrapper">
-            <div class="single-products">
-                <div class="productinfo text-center">
-                    <img src="<?php echo e(URL::to('frontend/images/home/product5.jpg')); ?>" alt="" />
-                    <h2>$56</h2>
-                    <p>Easy Polo Black Edition</p>
-                    <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-                </div>
-                <div class="product-overlay">
-                    <div class="overlay-content">
-                        <h2>$56</h2>
-                        <p>Easy Polo Black Edition</p>
-                        <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-                    </div>
-                </div>
-                <img src="<?php echo e(URL::to('frontend/images/home/sale.png')); ?>" class="new" alt="" />
-            </div>
-            <div class="choose">
-                <ul class="nav nav-pills nav-justified">
-                    <li><a href="#"><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
-                    <li><a href="#"><i class="fa fa-plus-square"></i>Add to compare</a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
-    <div class="col-sm-4">
-        <div class="product-image-wrapper">
-            <div class="single-products">
-                <div class="productinfo text-center">
-                    <img src="<?php echo e(URL::to('frontend/images/home/product6.jpg')); ?>" alt="" />
-                    <h2>$56</h2>
-                    <p>Easy Polo Black Edition</p>
-                    <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-                </div>
-                <div class="product-overlay">
-                    <div class="overlay-content">
-                        <h2>$56</h2>
-                        <p>Easy Polo Black Edition</p>
-                        <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-                    </div>
-                </div>
-            </div>
-            <div class="choose">
-                <ul class="nav nav-pills nav-justified">
-                    <li><a href="#"><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
-                    <li><a href="#"><i class="fa fa-plus-square"></i>Add to compare</a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
+    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+    
+        
+            
+                
+                    
+                    
+                    
+                    
+                
+                
+                    
+                        
+                        
+                        
+                    
+                
+            
+            
+                
+                    
+                    
+                
+            
+        
+    
+    
+        
+            
+                
+                    
+                    
+                    
+                    
+                
+                
+                    
+                        
+                        
+                        
+                    
+                
+            
+            
+                
+                    
+                    
+                
+            
+        
+    
+    
+        
+            
+                
+                    
+                    
+                    
+                    
+                
+                
+                    
+                        
+                        
+                        
+                    
+                
+                
+            
+            
+                
+                    
+                    
+                
+            
+        
+    
+    
+        
+            
+                
+                    
+                    
+                    
+                    
+                
+                
+                    
+                        
+                        
+                        
+                    
+                
+                
+            
+            
+                
+                    
+                    
+                
+            
+        
+    
+    
+        
+            
+                
+                    
+                    
+                    
+                    
+                
+                
+                    
+                        
+                        
+                        
+                    
+                
+            
+            
+                
+                    
+                    
+                
+            
+        
+    
     
 </div><!--features_items-->
 
