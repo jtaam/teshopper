@@ -12,6 +12,7 @@ session_start();
 class ProductController extends Controller
 {
     public function index(){
+        $this->AdminAuthCheck();
         $all_product_info = DB::table('tbl_products')
             ->join('tbl_category', 'tbl_products.category_id','=','tbl_category.category_id')
             ->join('tbl_brand','tbl_products.brand_id','=','tbl_brand.brand_id')
@@ -27,10 +28,12 @@ class ProductController extends Controller
     }
 
     public function create(){
+        $this->AdminAuthCheck();
         return view('admin.add_product');
     }
 
     public function save(Request $request){
+        $this->AdminAuthCheck();
         $data = array();
         $data['product_name']=$request->product_name;
         $data['category_id']=$request->category_id;
@@ -69,6 +72,7 @@ class ProductController extends Controller
     }
 
     public function unpublish($product_id){
+        $this->AdminAuthCheck();
         DB::table('tbl_products')
             ->where('product_id', $product_id)
             ->update(['product_status' => 0]);
@@ -77,6 +81,7 @@ class ProductController extends Controller
     }
 
     public function publish($product_id){
+        $this->AdminAuthCheck();
         DB::table('tbl_products')
             ->where('product_id', $product_id)
             ->update(['product_status' => 1]);
@@ -85,6 +90,7 @@ class ProductController extends Controller
     }
 
     public function edit($product_id){
+        $this->AdminAuthCheck();
         $the_product_info = DB::table('tbl_products')
             ->join('tbl_category', 'tbl_products.category_id','=','tbl_category.category_id')
             ->join('tbl_brand','tbl_products.brand_id','=','tbl_brand.brand_id')
@@ -97,6 +103,7 @@ class ProductController extends Controller
     }
 
     public function update(Request $request, $product_id){
+        $this->AdminAuthCheck();
         $data = array();
         $data['product_name']=$request->product_name;
         $data['category_id']=$request->category_id;
@@ -138,10 +145,20 @@ class ProductController extends Controller
     }
 
     public function delete($product_id){
+        $this->AdminAuthCheck();
         DB::table('tbl_products')
             ->where('product_id', $product_id)
             ->delete();
         Session::put('message','<p class="alert alert-success">Product deleted!</p>');
         return Redirect::to('all-product');
+    }
+
+    public function AdminAuthCheck(){
+        $admin_id = Session::get('admin_id');
+        if ($admin_id){
+            return; // stay in same page
+        }else{
+            return Redirect::to('/admin')->send();
+        }
     }
 }

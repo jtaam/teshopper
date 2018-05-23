@@ -12,6 +12,7 @@ session_start();
 class CategoryConntroller extends Controller
 {
     public function index(){
+        $this->AdminAuthCheck();
         $all_category_info = DB::table('tbl_category')->get();
         $manage_category = view('admin.all_category')
             ->with('all_category_info', $all_category_info);
@@ -19,10 +20,12 @@ class CategoryConntroller extends Controller
             ->with('admin.all_category', $manage_category);
     }
     public function create(){
+        $this->AdminAuthCheck();
         return view('admin.add_category');
     }
 
     public function save(Request $request){
+        $this->AdminAuthCheck();
         $data = array();
         $data['category_id'] = $request->category_id;
         $data['category_name'] = $request->category_name;
@@ -36,6 +39,7 @@ class CategoryConntroller extends Controller
     }
 
     public function unpublish($category_id){
+        $this->AdminAuthCheck();
         DB::table('tbl_category')
             ->where('category_id', $category_id)
             ->update(['category_status' => 0]);
@@ -44,6 +48,7 @@ class CategoryConntroller extends Controller
     }
 
     public function publish($category_id){
+        $this->AdminAuthCheck();
         DB::table('tbl_category')
             ->where('category_id', $category_id)
             ->update(['category_status' => 1]);
@@ -52,6 +57,7 @@ class CategoryConntroller extends Controller
     }
 
     public function edit($category_id){
+        $this->AdminAuthCheck();
         $the_category_info = DB::table('tbl_category')
             ->where('category_id',$category_id)
             ->first();
@@ -62,6 +68,7 @@ class CategoryConntroller extends Controller
     }
 
     public function update(Request $request, $category_id){
+        $this->AdminAuthCheck();
         $data = array();
         $data['category_name'] = $request->category_name;
         $data['category_description'] = $request->category_description;
@@ -74,10 +81,20 @@ class CategoryConntroller extends Controller
     }
 
     public function delete($category_id){
+        $this->AdminAuthCheck();
         DB::table('tbl_category')
             ->where('category_id', $category_id)
             ->delete();
         Session::put('message','<p class="alert alert-success">Category deleted!</p>');
         return Redirect::to('all-category');
+    }
+
+    public function AdminAuthCheck(){
+        $admin_id = Session::get('admin_id');
+        if ($admin_id){
+            return; // stay in same page
+        }else{
+            return Redirect::to('/admin')->send();
+        }
     }
 }

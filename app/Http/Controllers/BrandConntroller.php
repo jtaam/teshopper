@@ -11,6 +11,7 @@ session_start();
 class BrandConntroller extends Controller
 {
     public function index(){
+        $this->AdminAuthCheck();
         $all_brand_info = DB::table('tbl_brand')->get();
         $manage_brand = view('admin.all_brand')
             ->with('all_brand_info', $all_brand_info);
@@ -19,10 +20,12 @@ class BrandConntroller extends Controller
     }
 
     public function create(){
+        $this->AdminAuthCheck();
         return view('admin.add_brand');
     }
 
     public function save(Request $request){
+        $this->AdminAuthCheck();
         $data = array();
         $data['brand_id'] = $request->brand_id;
         $data['brand_name'] = $request->brand_name;
@@ -36,6 +39,7 @@ class BrandConntroller extends Controller
     }
 
     public function unpublish($brand_id){
+        $this->AdminAuthCheck();
         DB::table('tbl_brand')
             ->where('brand_id', $brand_id)
             ->update(['brand_status' => 0]);
@@ -44,6 +48,7 @@ class BrandConntroller extends Controller
     }
 
     public function publish($brand_id){
+        $this->AdminAuthCheck();
         DB::table('tbl_brand')
             ->where('brand_id', $brand_id)
             ->update(['brand_status' => 1]);
@@ -52,6 +57,7 @@ class BrandConntroller extends Controller
     }
 
     public function edit($brand_id){
+        $this->AdminAuthCheck();
         $the_brand_info = DB::table('tbl_brand')
             ->where('brand_id',$brand_id)
             ->first();
@@ -62,6 +68,7 @@ class BrandConntroller extends Controller
     }
 
     public function update(Request $request, $brand_id){
+        $this->AdminAuthCheck();
         $data = array();
         $data['brand_name'] = $request->brand_name;
         $data['brand_description'] = $request->brand_description;
@@ -74,10 +81,20 @@ class BrandConntroller extends Controller
     }
 
     public function delete($brand_id){
+        $this->AdminAuthCheck();
         DB::table('tbl_brand')
             ->where('brand_id', $brand_id)
             ->delete();
         Session::put('message','<p class="alert alert-success">brand deleted!</p>');
         return Redirect::to('all-brand');
+    }
+
+    public function AdminAuthCheck(){
+        $admin_id = Session::get('admin_id');
+        if ($admin_id){
+            return; // stay in same page
+        }else{
+            return Redirect::to('/admin')->send();
+        }
     }
 }
