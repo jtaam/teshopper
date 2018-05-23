@@ -155,43 +155,54 @@
                         </ol>
                         
                         <div class="carousel-inner">
-                            <div class="item active">
+                            <?php
+                            $all_published_sliders = DB::table('tbl_slider')
+                                ->where('slider_status', 1)
+                                ->get();
+                            ?>
+                            <?php $__currentLoopData = $all_published_sliders; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $slider): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                <?php if($loop->first): ?>
+                                    <div class="item active">
+                                    <?php else: ?>
+                                    <div class="item">
+                                <?php endif; ?>
                                 <div class="col-sm-6">
                                     <h1><span>E</span>-SHOPPER</h1>
-                                    <h2>Free E-Commerce Template</h2>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+                                    <h2><?php echo e($slider->slider_title); ?></h2>
+                                    <p><?php echo e($slider->slider_subtitle); ?></p>
                                     <button type="button" class="btn btn-default get">Get it now</button>
                                 </div>
                                 <div class="col-sm-6">
-                                    <img src="<?php echo e(asset('frontend/images/home/girl1.jp')); ?>g" class="girl img-responsive" alt="" />
-                                    <img src="<?php echo e(asset('frontend/images/home/pricing.pn')); ?>g"  class="pricing" alt="" />
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="col-sm-6">
-                                    <h1><span>E</span>-SHOPPER</h1>
-                                    <h2>100% Responsive Design</h2>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
-                                    <button type="button" class="btn btn-default get">Get it now</button>
-                                </div>
-                                <div class="col-sm-6">
-                                    <img src="<?php echo e(asset('frontend/images/home/girl2.jpg')); ?>" class="girl img-responsive" alt="" />
+                                    <img src="<?php echo e(URL::to($slider->slider_image)); ?>" class="girl img-responsive" alt="<?php echo e($slider->slider_title); ?>" />
                                     <img src="<?php echo e(asset('frontend/images/home/pricing.png')); ?>"  class="pricing" alt="" />
                                 </div>
                             </div>
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                             
-                            <div class="item">
-                                <div class="col-sm-6">
-                                    <h1><span>E</span>-SHOPPER</h1>
-                                    <h2>Free Ecommerce Template</h2>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
-                                    <button type="button" class="btn btn-default get">Get it now</button>
-                                </div>
-                                <div class="col-sm-6">
-                                    <img src="<?php echo e(asset('frontend/images/home/girl3.jpg')); ?>" class="girl img-responsive" alt="" />
-                                    <img src="<?php echo e(asset('frontend/images/home/pricing.png')); ?>" class="pricing" alt="" />
-                                </div>
-                            </div>
+                                
+                                    
+                                    
+                                    
+                                    
+                                
+                                
+                                    
+                                    
+                                
+                            
+                            
+                            
+                                
+                                    
+                                    
+                                    
+                                    
+                                
+                                
+                                    
+                                    
+                                
+                            
                             
                         </div>
                         

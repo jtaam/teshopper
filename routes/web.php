@@ -52,3 +52,13 @@ Route::get('/publish_product/{product_id}','ProductController@publish');
 Route::get('/edit_product/{product_id}','ProductController@edit');
 Route::post('/update-product/{product_id}','ProductController@update');
 Route::get('/delete_product/{product_id}','ProductController@delete');
+
+// Sliders
+Route::get('add-slider','SliderController@create');
+Route::post('save-slider','SliderController@store');
+Route::get('all-slider','SliderController@index');
+Route::get('unpublish-slider/{slider_id}','SliderController@unpublish');
+Route::get('publish-slider/{slider_id}','SliderController@publish');
+Route::get('edit-slider/{slider_id}','SliderController@edit');
+Route::post('update-slider/{slider_id}','SliderController@update');
+Route::get('delete-slider/{slider_id}','SliderController@destroy');
