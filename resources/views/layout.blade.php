@@ -57,7 +57,7 @@
                 <div class="row">
                     <div class="col-sm-4">
                         <div class="logo pull-left">
-                            <a href="index.html"><img src="{{URL::to('frontend/images/home/logo.png')}}" alt="logo" /></a>
+                            <a href="{{URL::to('/')}}"><img src="{{URL::to('frontend/images/home/logo.png')}}" alt="logo" /></a>
                         </div>
                         <div class="btn-group pull-right">
                             <div class="btn-group">
@@ -89,7 +89,7 @@
                                 <li><a href="#"><i class="fa fa-user"></i> Account</a></li>
                                 <li><a href="#"><i class="fa fa-star"></i> Wishlist</a></li>
                                 <li><a href="checkout.html"><i class="fa fa-crosshairs"></i> Checkout</a></li>
-                                <li><a href="cart.html"><i class="fa fa-shopping-cart"></i> Cart</a></li>
+                                <li><a href="{{URL::to('/show-cart')}}"><i class="fa fa-shopping-cart"></i> Cart</a></li>
                                 <li><a href="login.html"><i class="fa fa-lock"></i> Login</a></li>
                             </ul>
                         </div>
@@ -118,7 +118,7 @@
                                         <li><a href="shop.html">Products</a></li>
                                         <li><a href="product-details.html">Product Details</a></li> 
                                         <li><a href="checkout.html">Checkout</a></li> 
-                                        <li><a href="cart.html">Cart</a></li> 
+                                        <li><a href="{{URL::to('/show-cart')}}">Cart</a></li>
                                         <li><a href="login.html">Login</a></li> 
                                     </ul>
                                 </li> 
@@ -166,43 +166,19 @@
                                     @else
                                     <div class="item">
                                 @endif
-                                <div class="col-sm-6">
+                                <div class="col-sm-4">
                                     <h1><span>E</span>-SHOPPER</h1>
                                     <h2>{{$slider->slider_title}}</h2>
                                     <p>{{$slider->slider_subtitle}}</p>
                                     <button type="button" class="btn btn-default get">Get it now</button>
                                 </div>
-                                <div class="col-sm-6">
+                                <div class="col-sm-8">
                                     <img src="{{URL::to($slider->slider_image)}}" class="girl img-responsive" alt="{{$slider->slider_title}}" />
                                     <img src="{{asset('frontend/images/home/pricing.png')}}"  class="pricing" alt="" />
                                 </div>
                             </div>
                             @endforeach
-                            {{--<div class="item">--}}
-                                {{--<div class="col-sm-6">--}}
-                                    {{--<h1><span>E</span>-SHOPPER</h1>--}}
-                                    {{--<h2>100% Responsive Design</h2>--}}
-                                    {{--<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>--}}
-                                    {{--<button type="button" class="btn btn-default get">Get it now</button>--}}
-                                {{--</div>--}}
-                                {{--<div class="col-sm-6">--}}
-                                    {{--<img src="{{asset('frontend/images/home/girl2.jpg')}}" class="girl img-responsive" alt="" />--}}
-                                    {{--<img src="{{asset('frontend/images/home/pricing.png')}}"  class="pricing" alt="" />--}}
-                                {{--</div>--}}
-                            {{--</div>--}}
-                            
-                            {{--<div class="item">--}}
-                                {{--<div class="col-sm-6">--}}
-                                    {{--<h1><span>E</span>-SHOPPER</h1>--}}
-                                    {{--<h2>Free Ecommerce Template</h2>--}}
-                                    {{--<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>--}}
-                                    {{--<button type="button" class="btn btn-default get">Get it now</button>--}}
-                                {{--</div>--}}
-                                {{--<div class="col-sm-6">--}}
-                                    {{--<img src="{{asset('frontend/images/home/girl3.jpg')}}" class="girl img-responsive" alt="" />--}}
-                                    {{--<img src="{{asset('frontend/images/home/pricing.png')}}" class="pricing" alt="" />--}}
-                                {{--</div>--}}
-                            {{--</div>--}}
+
                             
                         </div>
                         
@@ -234,7 +210,7 @@
                             @foreach($all_published_category as $category)
                             <div class="panel panel-default">
                                 <div class="panel-heading">
-                                    <h4 class="panel-title"><a href="/category/{{ $category->category_id }}">{{ $category->category_name }}</a></h4>
+                                    <h4 class="panel-title"><a href="{{ URL::to('product-by-category/'.$category->category_id) }}">{{ $category->category_name }}</a></h4>
                                 </div>
                             </div>
                             @endforeach
@@ -250,7 +226,7 @@
                                 ?>
                                 <ul class="nav nav-pills nav-stacked">
                                     @foreach($all_published_brand as $brand)
-                                    <li><a href="#"> <span class="pull-right">(50)</span>{{$brand->brand_name}}</a></li>
+                                    <li><a href="{{ URL::to('product-by-brand/'.$brand->brand_id) }}"> <span class="pull-right">(50)</span>{{$brand->brand_name}}</a></li>
                                     @endforeach
                                 </ul>
                             </div>

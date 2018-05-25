@@ -16,16 +16,16 @@
                 <div class="product-overlay">
                     <div class="overlay-content">
                         <h2>${{$product->product_price}}</h2>
-                        <p>{{$product->product_name}}</p>
+                        <a href="{{URL::to('view-product/'.$product->product_id)}}">{{$product->product_name}}</a>
                         <p>{{$product->product_short_description}}</p>
-                        <a href="cart/{{$product->product_id}}" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                        <a href="{{URL::to('view-product/'.$product->product_id)}}" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
                     </div>
                 </div>
             </div>
             <div class="choose">
                 <ul class="nav nav-pills nav-justified">
-                    <li><a href="wishlist/{{$product->product_id}}"><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
-                    <li><a href="product/{{$product->product_id}}"><i class="fa fa-plus-square"></i>View Details</a></li>
+                    <li><a href="wishlist/{{$product->product_id}}" class="text-capitalize"><i class="fa fa-plus-square"></i>{{$product->brand_name}}</a></li>
+                    <li><a href="{{URL::to('view-product/'.$product->product_id)}}"><i class="fa fa-plus-square"></i>View Details</a></li>
                 </ul>
             </div>
         </div>

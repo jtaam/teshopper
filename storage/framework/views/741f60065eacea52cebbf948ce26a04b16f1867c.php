@@ -57,7 +57,7 @@
                 <div class="row">
                     <div class="col-sm-4">
                         <div class="logo pull-left">
-                            <a href="index.html"><img src="<?php echo e(URL::to('frontend/images/home/logo.png')); ?>" alt="logo" /></a>
+                            <a href="<?php echo e(URL::to('/')); ?>"><img src="<?php echo e(URL::to('frontend/images/home/logo.png')); ?>" alt="logo" /></a>
                         </div>
                         <div class="btn-group pull-right">
                             <div class="btn-group">
@@ -89,7 +89,7 @@
                                 <li><a href="#"><i class="fa fa-user"></i> Account</a></li>
                                 <li><a href="#"><i class="fa fa-star"></i> Wishlist</a></li>
                                 <li><a href="checkout.html"><i class="fa fa-crosshairs"></i> Checkout</a></li>
-                                <li><a href="cart.html"><i class="fa fa-shopping-cart"></i> Cart</a></li>
+                                <li><a href="<?php echo e(URL::to('/show-cart')); ?>"><i class="fa fa-shopping-cart"></i> Cart</a></li>
                                 <li><a href="login.html"><i class="fa fa-lock"></i> Login</a></li>
                             </ul>
                         </div>
@@ -118,7 +118,7 @@
                                         <li><a href="shop.html">Products</a></li>
                                         <li><a href="product-details.html">Product Details</a></li> 
                                         <li><a href="checkout.html">Checkout</a></li> 
-                                        <li><a href="cart.html">Cart</a></li> 
+                                        <li><a href="<?php echo e(URL::to('/show-cart')); ?>">Cart</a></li>
                                         <li><a href="login.html">Login</a></li> 
                                     </ul>
                                 </li> 
@@ -166,43 +166,19 @@
                                     <?php else: ?>
                                     <div class="item">
                                 <?php endif; ?>
-                                <div class="col-sm-6">
+                                <div class="col-sm-4">
                                     <h1><span>E</span>-SHOPPER</h1>
                                     <h2><?php echo e($slider->slider_title); ?></h2>
                                     <p><?php echo e($slider->slider_subtitle); ?></p>
                                     <button type="button" class="btn btn-default get">Get it now</button>
                                 </div>
-                                <div class="col-sm-6">
+                                <div class="col-sm-8">
                                     <img src="<?php echo e(URL::to($slider->slider_image)); ?>" class="girl img-responsive" alt="<?php echo e($slider->slider_title); ?>" />
                                     <img src="<?php echo e(asset('frontend/images/home/pricing.png')); ?>"  class="pricing" alt="" />
                                 </div>
                             </div>
                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                            
-                                
-                                    
-                                    
-                                    
-                                    
-                                
-                                
-                                    
-                                    
-                                
-                            
-                            
-                            
-                                
-                                    
-                                    
-                                    
-                                    
-                                
-                                
-                                    
-                                    
-                                
-                            
+
                             
                         </div>
                         
@@ -234,7 +210,7 @@
                             <?php $__currentLoopData = $all_published_category; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                             <div class="panel panel-default">
                                 <div class="panel-heading">
-                                    <h4 class="panel-title"><a href="/category/<?php echo e($category->category_id); ?>"><?php echo e($category->category_name); ?></a></h4>
+                                    <h4 class="panel-title"><a href="<?php echo e(URL::to('product-by-category/'.$category->category_id)); ?>"><?php echo e($category->category_name); ?></a></h4>
                                 </div>
                             </div>
                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
@@ -250,7 +226,7 @@
                                 ?>
                                 <ul class="nav nav-pills nav-stacked">
                                     <?php $__currentLoopData = $all_published_brand; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $brand): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                    <li><a href="#"> <span class="pull-right">(50)</span><?php echo e($brand->brand_name); ?></a></li>
+                                    <li><a href="<?php echo e(URL::to('product-by-brand/'.$brand->brand_id)); ?>"> <span class="pull-right">(50)</span><?php echo e($brand->brand_name); ?></a></li>
                                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                 </ul>
                             </div>

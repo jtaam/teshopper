@@ -15,16 +15,16 @@
                 <div class="product-overlay">
                     <div class="overlay-content">
                         <h2>$<?php echo e($product->product_price); ?></h2>
-                        <p><?php echo e($product->product_name); ?></p>
+                        <a href="<?php echo e(URL::to('view-product/'.$product->product_id)); ?>"><?php echo e($product->product_name); ?></a>
                         <p><?php echo e($product->product_short_description); ?></p>
-                        <a href="cart/<?php echo e($product->product_id); ?>" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                        <a href="<?php echo e(URL::to('view-product/'.$product->product_id)); ?>" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
                     </div>
                 </div>
             </div>
             <div class="choose">
                 <ul class="nav nav-pills nav-justified">
-                    <li><a href="wishlist/<?php echo e($product->product_id); ?>"><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
-                    <li><a href="product/<?php echo e($product->product_id); ?>"><i class="fa fa-plus-square"></i>View Details</a></li>
+                    <li><a href="wishlist/<?php echo e($product->product_id); ?>" class="text-capitalize"><i class="fa fa-plus-square"></i><?php echo e($product->brand_name); ?></a></li>
+                    <li><a href="<?php echo e(URL::to('view-product/'.$product->product_id)); ?>"><i class="fa fa-plus-square"></i>View Details</a></li>
                 </ul>
             </div>
         </div>
