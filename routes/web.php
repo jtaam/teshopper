@@ -24,6 +24,7 @@ Route::get('view-product/{product_id}', 'HomeController@product_by_id');
 Route::post('/add-to-cart', 'CartController@add_to_cart');
 Route::get('/show-cart', 'CartController@show_cart');
 Route::get('/delete-cart/{rowId}', 'CartController@destroy');
+Route::post('/update-cart', 'CartController@update_cart');
 
 //-------------------
 // Backend route

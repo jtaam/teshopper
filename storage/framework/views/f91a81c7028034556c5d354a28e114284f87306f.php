@@ -42,11 +42,12 @@
                             </td>
                             <td class="cart_quantity">
                                 <div class="cart_quantity_button">
-                                    <form action="" method="post">
+                                    <form action="<?php echo e(URL::to('update-cart')); ?>" method="post">
+                                        <?php echo e(csrf_field()); ?>
 
                                         <input class="cart_quantity_input" type="text" name="qty"
                                                value="<?php echo e($v_content->qty); ?>" autocomplete="off" size="2">
-                                        <input type="hidden" name="rowId" value="">
+                                        <input type="hidden" name="rowId" value="<?php echo e($v_content->rowId); ?>">
                                         <input type="submit" name="submit" value="update"
                                                class="btn btn-sm btn-default">
                                     </form>
@@ -72,28 +73,20 @@
     <section id="do_action">
         <div class="container">
             <div class="row">
-                
-                    
-                        
-                        
-                            
-                            
-                    
-                
                 <div class="col-sm-8">
                     <div class="total_area">
                         <ul>
-                            <li>Cart Sub Total <span><?php echo e($v_content->subtotal()); ?></span></li>
-                            <li>Eco Tax <span><?php echo e($v_content->tax()); ?></span></li>
+                            <li>Cart Sub Total <span><?php echo e(Cart::subtotal()); ?></span></li>
+                            <li>Eco Tax <span><?php echo e(Cart::tax()); ?></span></li>
                             <li>Shipping Cost <span>Free</span></li>
-                            <li>Total <span><?php echo e($v_content->total); ?></span></li>
+                            <li>Total <span><?php echo e(Cart::total()); ?></span></li>
                         </ul>
                         <a class="btn btn-default update" href="">Update</a><br>
 
-                        <li><a href=""><i class="btn btn-default"> Checkout</i></a>
-                        </li>
+                        
+                        
 
-                        <li><a class="btn btn-default check_out" href="">Check Out</a></li>
+                        <a class="btn btn-default check_out" href="">Check Out</a>
 
 
                     </div>

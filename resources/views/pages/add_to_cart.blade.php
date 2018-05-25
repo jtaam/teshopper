@@ -43,11 +43,11 @@
                             </td>
                             <td class="cart_quantity">
                                 <div class="cart_quantity_button">
-                                    <form action="" method="post">
-
+                                    <form action="{{URL::to('update-cart')}}" method="post">
+                                        {{csrf_field()}}
                                         <input class="cart_quantity_input" type="text" name="qty"
                                                value="{{$v_content->qty}}" autocomplete="off" size="2">
-                                        <input type="hidden" name="rowId" value="">
+                                        <input type="hidden" name="rowId" value="{{$v_content->rowId}}">
                                         <input type="submit" name="submit" value="update"
                                                class="btn btn-sm btn-default">
                                     </form>
@@ -73,28 +73,20 @@
     <section id="do_action">
         <div class="container">
             <div class="row">
-                {{--<div class="col-sm-4">--}}
-                    {{--<div class="heading">--}}
-                        {{--<h3>What would you like to do next?</h3>--}}
-                        {{--<p>Choose if you have a discount code or reward points you want to use or would like to estimate--}}
-                            {{--your--}}
-                            {{--delivery cost.</p>--}}
-                    {{--</div>--}}
-                {{--</div>--}}
                 <div class="col-sm-8">
                     <div class="total_area">
                         <ul>
-                            <li>Cart Sub Total <span>{{$v_content->subtotal()}}</span></li>
-                            <li>Eco Tax <span>{{$v_content->tax()}}</span></li>
+                            <li>Cart Sub Total <span>{{Cart::subtotal()}}</span></li>
+                            <li>Eco Tax <span>{{Cart::tax()}}</span></li>
                             <li>Shipping Cost <span>Free</span></li>
-                            <li>Total <span>{{$v_content->total}}</span></li>
+                            <li>Total <span>{{Cart::total()}}</span></li>
                         </ul>
                         <a class="btn btn-default update" href="">Update</a><br>
 
-                        <li><a href=""><i class="btn btn-default"> Checkout</i></a>
-                        </li>
+                        {{--<li><a href=""><i class="btn btn-default"> Checkout</i></a>--}}
+                        {{--</li>--}}
 
-                        <li><a class="btn btn-default check_out" href="">Check Out</a></li>
+                        <a class="btn btn-default check_out" href="">Check Out</a>
 
 
                     </div>
